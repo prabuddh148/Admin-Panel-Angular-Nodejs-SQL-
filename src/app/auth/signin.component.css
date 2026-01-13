@@ -1,0 +1,247 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100vw;
+  font-family: var(--font-family);
+  background: var(--background);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Minimal noise texture */
+:host::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 15% 50%, rgba(255, 255, 255, 0.02) 0%, transparent 40%),
+    radial-gradient(circle at 85% 50%, rgba(255, 255, 255, 0.02) 0%, transparent 40%);
+  opacity: 0.6;
+}
+
+/* Elegant vertical accent line */
+:host::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(255, 255, 255, 0.1) 20%,
+    rgba(255, 255, 255, 0.1) 80%,
+    transparent
+  );
+  transform: translateX(-50%);
+  animation: lineGlow 8s ease-in-out infinite;
+}
+
+@keyframes lineGlow {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+body,
+html {
+  height: 100%;
+  margin: 0;
+  font-family: var(--font-family);
+}
+
+.signin-heading {
+  color: var(--heading);
+  font-size: 1.75rem;
+  font-weight: 300;
+  letter-spacing: 2px;
+  margin-bottom: 3.5rem;
+  text-align: center;
+  padding-bottom: 0.75rem;
+}
+
+.signin-heading::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.3);
+  transition: width 0.4s ease;
+}
+
+.signin-heading:hover::after {
+  width: 80px;
+}
+
+/* Form container - no border, just shadow */
+form {
+  background: var(--form-bg);
+  backdrop-filter: blur(10px);
+  border-radius: 0;
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  max-width: 360px;
+  width: 100%;
+  margin: auto;
+  position: relative;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Subtle top accent */
+form::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+}
+
+label {
+  color: var(--label);
+  font-size: 0.8rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+input {
+  background: var(--input-bg);
+  color: #ffffff;
+  border: none;
+  border-radius: 0;
+  padding: 1rem;
+  font-size: 0.95rem;
+  outline: none;
+  transition: all 0.3s ease;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid var(--input-border);
+}
+
+input:hover {
+  background: var(--input-hover-bg);
+  border-bottom-color: rgba(255, 255, 255, 0.3);
+}
+
+input:focus {
+  background: var(--input-focus-bg);
+  border-bottom-color: var(--input-border-focus);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Enhanced placeholder styling */
+input::placeholder {
+  color: var(--placeholder);
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+input:focus::placeholder {
+  color: var(--placeholder-focus);
+}
+
+/* Password toggle icon (if needed) */
+.password-toggle {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.password-toggle:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Form footer text */
+.form-footer {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.75rem;
+  text-align: center;
+  margin-top: 1.5rem;
+  letter-spacing: 0.5px;
+}
+
+/* Input container for better alignment */
+.input-container {
+  position: relative;
+  margin-bottom: 0.25rem;
+}
+
+/* Floating label effect */
+input:focus + .floating-label,
+input:not(:placeholder-shown) + .floating-label {
+  transform: translateY(-24px) scale(0.85);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.floating-label {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.95rem;
+  font-weight: 300;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+  .signin-heading {
+    font-size: 2rem;
+    margin-bottom: 2.5rem;
+  }
+
+  form {
+    padding: 2rem 1.5rem;
+    margin: 0 1rem;
+  }
+
+  :host::after {
+    opacity: 0.2;
+  }
+}
+
+/* Loading animation */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.loading-shimmer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.02), transparent);
+  animation: shimmer 2s infinite;
+}
