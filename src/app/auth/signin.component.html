@@ -1,8 +1,9 @@
-<form>
+<app-loader [loading]="loading"></app-loader>
+<form (ngSubmit)="onSubmit()">
     <h2 class="signin-heading">Sign In</h2>
     <label>Email:</label>
-    <input type="email" name="email" required placeholder="Enter your email" />
+    <input type="email" name="email" [(ngModel)]="email" required placeholder="Enter your email" />
     <label>Password:</label>
-    <input type="password" name="password" required placeholder="Enter your password" />
-    <app-button type="submit">Sign In</app-button>
+    <input type="password" name="password" [(ngModel)]="password" required placeholder="Enter your password" />
+    <app-button type="submit" [disabled]="!email || !password">Sign In</app-button>
 </form>
