@@ -1,0 +1,35 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import 'tailwindcss/preflight';
+@import 'tailwindcss/utilities';
+
+:root {
+  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+  --background: #0a0a0a;
+  --form-bg: rgba(20, 20, 20, 0.7);
+  --accent-line: rgba(255, 255, 255, 0.1);
+  --label: rgba(255, 255, 255, 0.7);
+  --input-bg: rgba(15, 15, 15, 0.6);
+  --input-hover-bg: rgba(25, 25, 25, 0.8);
+  --input-focus-bg: rgba(30, 30, 30, 0.9);
+  --input-border: rgba(255, 255, 255, 0.1);
+  --input-border-focus: #ffffff;
+  --button-bg: transparent;
+  --button-color: #ffffff;
+  --button-border: rgba(255, 255, 255, 0.2);
+  --button-hover-bg: rgba(255, 255, 255, 0.05);
+  --button-hover-border: rgba(255, 255, 255, 0.4);
+  --heading: #ffffff;
+  --placeholder: rgba(255, 255, 255, 0.3);
+  --placeholder-focus: rgba(255, 255, 255, 0.2);
+}
+
+/* Set the global background for the entire app */
+body,
+html {
+  background: #232323;
+  min-height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+}
