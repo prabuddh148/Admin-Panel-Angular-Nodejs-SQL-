@@ -10,4 +10,7 @@ import { NgIf } from '@angular/common';
 })
 export class LoaderComponent {
   @Input() loading = false;
+  ngOnChanges() {
+    console.log('LoaderComponent loading:', this.loading);
+  }
 }
