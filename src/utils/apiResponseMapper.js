@@ -13,14 +13,7 @@ export const API_RESPONSE_MAP = {
     [API_RESPONSE_STATUS_CODES.SERVER_ERROR]: ApiResponseHelper.serverError,
 };
 
-export const successResponse = ({
-    message,
-    data = null,
-    statusCode = 200,
-    meta = null,
-    apiPurpose = "",
-    error = null,
-}) => ({
+export const successResponse = ({ message, data = null, statusCode = 200, meta = null, apiPurpose = "", error = null }) => ({
     statusCode,
     success: true,
     message,
@@ -30,13 +23,7 @@ export const successResponse = ({
     error,
 });
 
-export const errorResponse = ({
-    message,
-    statusCode = 500,
-    apiPurpose = "",
-    error = null,
-    data = null,
-}) => ({
+export const errorResponse = ({ message, statusCode = 500, apiPurpose = "", error = null, data = null }) => ({
     statusCode,
     success: false,
     message,
@@ -44,7 +31,6 @@ export const errorResponse = ({
     apiPurpose,
     error,
 });
-
 
 // export const successResponse = (message, data = null, statusCode = 200, meta = null,apiPurpose="",error=null) => ({
 //   statusCode,
@@ -55,7 +41,6 @@ export const errorResponse = ({
 //   meta,
 //   error
 // });
-
 
 // export const errorResponse = (message,  statusCode = 500, apiPurpose="",error=null) => ({
 //   statusCode,

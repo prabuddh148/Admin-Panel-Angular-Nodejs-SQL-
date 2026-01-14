@@ -10,17 +10,12 @@ const __dirname = path.dirname(__filename);
 const env = process.env.NODE_ENV || "development";
 const config = DB_CONFIG[env];
 
-const sequelize = new Sequelize(
-    config.database,
-    config.username,
-    config.password,
-    {
-        host: config.host,
-        port: config.port,
-        dialect: config.dialect,
-        logging: false
-    }
-);
+const sequelize = new Sequelize(config.database, config.username, config.password, {
+    host: config.host,
+    port: config.port,
+    dialect: config.dialect,
+    logging: false,
+});
 
 const migrator = new Umzug({
     migrations: {
@@ -31,7 +26,7 @@ const migrator = new Umzug({
     context: sequelize.getQueryInterface(),
     storage: new SequelizeStorage({
         sequelize,
-        modelName: "migrations_meta"
+        modelName: "migrations_meta",
     }),
     logger: console,
 });
@@ -42,7 +37,10 @@ async function runMigrations() {
         console.log("Database connected!");
 
         const migrations = await migrator.up();
-        console.log("Migrations completed:", migrations.map(m => m.name));
+        console.log(
+            "Migrations completed:",
+            migrations.map((m) => m.name)
+        );
     } catch (err) {
         console.error("Migration failed:", err);
     } finally {
