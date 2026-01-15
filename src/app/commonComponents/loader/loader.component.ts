@@ -1,16 +1,11 @@
-import { Component, Input } from '@angular/core';
-import { NgIf } from '@angular/common';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-loader',
   standalone: true,
-  imports: [NgIf],
   templateUrl: './loader.component.html',
   styleUrls: ['./loader.component.css'],
 })
 export class LoaderComponent {
-  @Input() loading = false;
-  ngOnChanges() {
-    console.log('LoaderComponent loading:', this.loading);
-  }
+  loading = input(false);
 }

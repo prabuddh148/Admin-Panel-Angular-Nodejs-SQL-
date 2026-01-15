@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input, computed } from '@angular/core';
 import { NgClass } from '@angular/common';
 @Component({
   selector: 'app-button',
@@ -8,7 +8,9 @@ import { NgClass } from '@angular/common';
   styleUrls: ['./button.component.css'],
 })
 export class ButtonComponent {
-  @Input() type: 'button' | 'submit' | 'reset' = 'button';
-  @Input() className = '';
-  @Input() disabled = false;
+  type = input<'button' | 'submit' | 'reset'>('button');
+  className = input('');
+  disabled = input(false);
+
+  getClassName = computed(() => `app-btn${this.className() ? ' ' + this.className() : ''}`);
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { LoaderComponent } from '../commonComponents/loader/loader.component';
 
@@ -10,8 +10,8 @@ import { LoaderComponent } from '../commonComponents/loader/loader.component';
   imports: [LoaderComponent, FormsModule],
 })
 export class SignupComponent {
-  email = '';
-  password = '';
-  confirmPassword = '';
-  loading = false;
+  email = signal('');
+  password = signal('');
+  confirmPassword = signal('');
+  loading = signal(false);
 }

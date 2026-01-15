@@ -1,12 +1,13 @@
 <h2>Sign Up</h2>
 <form>
-    <app-loader [loading]="loading"></app-loader>
+    <app-loader [loading]="loading()"></app-loader>
     <label>Email:</label>
-    <input type="email" name="email" required [(ngModel)]="email" />
+    <input type="email" name="email" [ngModel]="email()" (ngModelChange)="email.set($event)" required />
     <label>Password:</label>
-    <input type="password" name="password" required placeholder="Enter your password" autocomplete="current-password"
-        [(ngModel)]="password" />
+    <input type="password" name="password" [ngModel]="password()" (ngModelChange)="password.set($event)" required
+        placeholder="Enter your password" autocomplete="current-password" />
     <label>Confirm Password:</label>
-    <input type="password" name="confirmPassword" required [(ngModel)]="confirmPassword" />
+    <input type="password" name="confirmPassword" [ngModel]="confirmPassword()" autocomplete="new-password"
+        (ngModelChange)="confirmPassword.set($event)" required />
     <button type="submit">Sign Up</button>
 </form>

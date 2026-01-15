@@ -1,7 +1,5 @@
-<app-loader [loading]="loading"></app-loader>
-
 <main>
     <p-toast></p-toast>
+    <app-loader [loading]="loading()"></app-loader>
 </main>
-
 <router-outlet></router-outlet>
